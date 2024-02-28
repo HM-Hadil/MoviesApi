@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col">
+    <span class="ml-4"><strong>Feature</strong></span>
+    <div class="d-flex pt-2">
+      <div class="d-flex me-auto">
+        <input type="text" class="form-control me-2" name="searchField" [(ngModel)]="searchType" (input)="filterMovies()" >
+        <button type="button" class="btn btn-nga-primary btn-sm btn-nga" ><i class="fa fa-search"></i></button>
+      </div>
+      <div class="d-flex me-auto d-none d-md-block">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  @for (movie of filteredMovies; track movie) {
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-2 mb-1" (click)="sendIdMovie(movie.imdbID)">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-movie-date">
+          <a class="waves-effect" style="cursor: pointer"
+           tabindex="1">
+          <b>{{movie.Year}}</b>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card-movie-img">
+          <a  tabindex="1">
+            <img [src]="movie.Poster" alt="{{ movie.Title }}" Poster style="cursor: pointer" class="img-fluid shadow-lg rounded" >
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card-movie-text">
+          <a class="waves-effect" style="cursor: pointer" tabindex="1">
+            <b style="font-size: 13px;">{{ movie.Title }}</b>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card-movie-text">
+          <a class="waves-effect" style="cursor: pointer" tabindex="1">
+            <b style="font-size: 13px;">{{ movie.Type }}</b>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!--a [routerLink]="['/all-content', 'movie', movie.imdbID]">View Details</-a>
+    -->
+  </div>
+ </div>
+  }
+ @empty {
+  Empty list of users
+}
+
+    <div class="row">
+      @if(filteredMovies.length === 0){
+      <div class="col">
+        <p>No movies found.</p>
+      </div>}
+    </div>
+
+  </div>
+
+<div>
+  <button >Previous</button>
+  <span>1</span>
+  <button >Next</button>
+</div>
+
+
+
+
